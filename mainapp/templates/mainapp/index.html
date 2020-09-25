@@ -1,35 +1,14 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <title>Главная</title>
-    <link rel="stylesheet" href="/static/css/style.css"> </head>
-
-<body>
-    <!--start header-->
-    <div class="header">
-        <div class="logo"><img src="/static/img/logo.png" alt="logo" style=""></div>
-        <div class="menu">
-            <ul>
-                <li><a href="/">Главная</a></li>
-                <li><a href="/catalog/">Каталог</a></li>
-                <li><a href="/contacts/">Контакты</a></li>
-            </ul>
-        </div>
-    </div>
-    <!--end header-->
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
     <hr>
     <div class="container">
         <h1 class="main_head">fishing.planet</h1>
-        <center><img src="/static/img/main.jpg" alt="" width="100%" style="outline: inherit;"></center>
-        <h3><center>Добро пожаловать в магазин товаров для рыбалки</center></h3> </div>
-    <!--start footer-->
-    <div class="footer">
-        <hr>
-        <p>2020-2020 &copy; fishing.planet <br> Все права защищены.</p>
+        <center><img src="{% static 'img/main.jpg' %}" alt="" width="100%" style="outline: inherit;"></center>
+        <h3>
+            <center>Добро пожаловать в магазин товаров для рыбалки</center>
+        </h3>
     </div>
-    <!--end footer-->
-</body>
+{% endblock %}
 
-</html>
+

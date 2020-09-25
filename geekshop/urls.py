@@ -19,11 +19,11 @@ from django.urls import path
 import mainapp.views as mainapp
 
 urlpatterns = [
-    path('', mainapp.main),
-    path('catalog/', mainapp.catalog),
-    path('catalog/lot_1/', mainapp.lot_1),
-    path('catalog/lot_2/', mainapp.lot_2),
-    path('catalog/lot_3/', mainapp.lot_3),
-    path('contacts/', mainapp.contacts),
+    path('', mainapp.main, name='main'),
+    path('catalog/', mainapp.catalog, name='catalog'),
+    path('catalog/lot_1/', mainapp.lot_1, name='lot_1'),
+    path('catalog/lot_2/', mainapp.lot_2, name='lot_2'),
+    path('catalog/lot_3/', mainapp.lot_3, name='lot_3'),
+    path('contacts/', mainapp.contacts, name='contacts'),
     path('admin/', admin.site.urls),
 ]
