@@ -1,8 +1,22 @@
 
-
 .map {
     width: 100%;
     height: 374px;
+}
+
+.categories {
+    margin: 0 auto;
+    width: 800px;
+    clear: both;
+}
+
+.categories li {
+    list-style-type: none;
+}
+
+.category {
+    display: block;
+    text-align: center;
 }
 
 .lots {
@@ -131,7 +145,7 @@ textarea {
     display: block;
 }
 
-        
+
 .short {
     color: #707070;
     font-size: 14px;
@@ -164,14 +178,14 @@ textarea {
 
 img {
     /*    border: 3px solid #707070;*/
-/*    outline: 3px solid #707070;*/
+    /*    outline: 3px solid #707070;*/
     width: 180px;
 }
 
 img:hover {
     /*    border: 3px solid #707070;*/
-/*    padding: 10px;*/
-/*    outline: inherit;*/
+    /*    padding: 10px;*/
+    /*    outline: inherit;*/
 }
 
 .main_head {

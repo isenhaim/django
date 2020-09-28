@@ -1,8 +1,15 @@
 from django.shortcuts import render
 import json
 
+from mainapp.models import Product
+
 with open('static/json/context.json', 'r', encoding='UTF-8') as file:
     data = json.load(file)
+
+category = Product.objects.all()
+content_catalog = {'title': data['content'][0]['catalog'][0]['title'], 'categorys': category}
+
+print(category)
 
 
 def main(request):
@@ -10,7 +17,7 @@ def main(request):
 
 
 def catalog(request):
-    return render(request, 'mainapp/catalog.html', context=data['content'][0]['catalog'][0])
+    return render(request, 'mainapp/catalog.html', context=content_catalog)
 
 
 def contacts(request):
