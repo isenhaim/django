@@ -1,3 +1,19 @@
+.registration {
+ margin-top: 10px;
+}
+
+/*.login {*/
+/*    margin: 40% auto;*/
+/*    width: 300px;*/
+/*}*/
+
+.form-signin button {
+    margin: 0 auto;
+    width: 100px;
+}
+.errorlist {
+    display: none;
+}
 
 .map {
     width: 100%;
@@ -85,10 +101,11 @@
 }
 
 .menu {
-    width: 370px;
+    min-width: 500px;
+    width: 650px;
     height: 100px;
     margin-left: auto;
-    margin-right: 0px;
+
 }
 
 .header {
