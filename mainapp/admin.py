@@ -1,7 +1,12 @@
 from django.contrib import admin
 
-from mainapp.models import Product, Category
+from authapp.models import ShopUser
+from basketapp.models import Basket
+from mainapp.models import Product, ProductCategory
 
 admin.site.register(Product)
-admin.site.register(Category)
+admin.site.register(ProductCategory)
+admin.site.register(Basket)
+admin.site.register(ShopUser)
+
 

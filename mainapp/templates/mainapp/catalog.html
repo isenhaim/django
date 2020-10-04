@@ -2,39 +2,33 @@
 {% load static %}
 {% block content %}
     <hr>
-    <h1>Каталог</h1>
-    <div class="categories">
-{#        {% for foo in categorys %}#}
-{#            <div class="category">#}
-{#                <ul>#}
-{#                    <li>{{ foo.name }}</li>#}
-{#                </ul>#}
-{#            </div>#}
-{#        {% endfor %}#}
+    <h4>Категории</h4>
+    <div class="inner">
+        <nav class="nav nav-masthead justify-content-center mb-5">
+            {% for category in links_menu %}
+                <a href="{% url 'catalog:category' category.pk %}" class="nav-link">{{ category.name }}</a>
+            {% endfor %}
+        </nav>
     </div>
-    <div class="lots">
-        <div class="lot_1">
-            <div class="picture">
-                <a href="{% url 'lot_1' %}" target="_blank"><img src="{% static 'img/lot_1.jpg' %}" alt="catana"
-                                                                 width="300"></a>
-                <div class="link"><a href="{% url 'lot_1' %}" target="_blank">CATANA EX TELESPIN 165UL</a></div>
+    {% for product in products %}
+        <div class="centered">
+            <div class="card-deck">
+                <div class="card text-white bg-dark mb-3">
+                    <div class="card-header">{{ product.name }}</div>
+                    <img class="card-img-top p-1" src="/media/{{ product.photo }}" alt="">
+                    <div class="card-link">
+                        <p class="mt-2">Цена: <b>{{ product.price }}</b></p>
+                        <a href="{% url 'basket:add' product.pk %}"
+                           class="btn btn-success btn-group-sm w-75 mb-1">Купить</a>
+                        <a href="{% url 'catalog:item' product.pk %}"
+                           class="btn btn-info btn-group-sm w-75 mb-4">Подробнее</a>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text text-left">{{ product.short_desc|safe }}</p>
+                        <p class="text-left">Количество на складе: <b>{{ product.quantity }}</b></p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="lot_2">
-            <div class="picture">
-                <a href="{% url 'lot_2' %}" target="_blank"><img src="{% static 'img/lot_2.jpg' %}"
-                                                                 alt="descent ice reel"
-                                                                 width="300"></a>
-                <div class="link"><a href="{% url 'lot_2' %}" target="_blank">Fishing Descent Ice Reel</a></div>
-            </div>
-        </div>
-        <div class="lot_3">
-            <div class="picture">
-                <a href="{% url 'lot_3' %}" target="_blank"><img src="{% static 'img/lot_3.jpg' %}" alt="catana"
-                                                                 width="300"></a>
-                <div class="link"><a href="{% url 'lot_3' %}" target="_blank">Minnow 130SP 07</a></div>
-            </div>
-        </div>
-    </div>
+    {% endfor %}
 {% endblock %}
-

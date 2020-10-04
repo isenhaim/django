@@ -16,18 +16,16 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 import mainapp.views as mainapp
 
-
 urlpatterns = [
     path('', mainapp.main, name='main'),
-    path('catalog/', mainapp.catalog, name='catalog'),
-    path('catalog/lot_1/', mainapp.lot_1, name='lot_1'),
-    path('catalog/lot_2/', mainapp.lot_2, name='lot_2'),
-    path('catalog/lot_3/', mainapp.lot_3, name='lot_3'),
+    path('catalog/', include('mainapp.urls', namespace='catalog')),
     path('contacts/', mainapp.contacts, name='contacts'),
+    path('auth/', include('authapp.urls', namespace='auth')),
+    path('basket/', include('basketapp.urls', namespace='basket')),
     path('admin/', admin.site.urls),
 ]
 
