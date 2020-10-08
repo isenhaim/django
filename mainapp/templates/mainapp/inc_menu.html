@@ -3,8 +3,9 @@
         <a class="nav-link ml-3" href="{% url 'auth:edit' %}">
             {{ user.username|default:'Пользователь' }}
         </a>
-        <span class="nav-link"><i class="fas fa-cart-plus"></i>{% if basket %} {{ count }}/
-            {{ price }}  {% endif %}</span>
+        <a href="{% url 'basket:view' %}" class="nav-link"><span class="fas fa-cart-plus ">
+            {% if basket %} {{ basket.0.get_cost|floatformat:0 }} руб. / {{ basket.0.get_count }} шт.{% endif %}</span>
+        </a>
         <a class="nav-link" href="{% url 'auth:logout' %}">выйти</a>
 
     {% else %}

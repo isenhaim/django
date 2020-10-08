@@ -14,8 +14,18 @@ class Basket(models.Model):
         verbose_name = 'корзина'
         verbose_name_plural = 'корзины'
 
-    def get_count(self):
-        return self.quantity
+    @property
+    def product_cost(self):
+        return self.product.price * self.quantity
 
+    @property
+    def get_count(self):
+        _items = Basket.objects.filter(user=self.user)
+        _totalquantity = sum(list(map(lambda x: x.quantity, _items)))
+        return _totalquantity
+
+    @property
     def get_cost(self):
-        return self.quantity * self.product.price
+        _items = Basket.objects.filter(user=self.user)
+        _totalcost = sum(list(map(lambda x: x.product_cost, _items)))
+        return _totalcost

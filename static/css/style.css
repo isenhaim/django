@@ -265,11 +265,11 @@
 @media (min-width: 576px) {
 
 }
-/* 3 колонки на md */
+
 @media (min-width: 768px) {
 
 }
-/* 4 колонки на lg и xl */
+
 @media (min-width: 992px) {
 
 }
@@ -280,7 +280,7 @@
 .user_avatar img {
     margin: 30px;
     border-radius: 200px;
-    width: 400px;
+    width: 300px;
 }
 
 .login {
