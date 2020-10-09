@@ -31,26 +31,19 @@
         }
     </style>
 </head>
-
-<body class="text-center">
-<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-
-    {% include 'mainapp/includes/inc_main_menu.html' %}
-
-    <main role="main" class="inner cover">
-        {% block content %}
-
-        {% endblock %}
-    </main>
-
-    <footer class="mastfoot mt-auto footer">
-        <div class="inner mt-5">
-            <p> 2019-{% now 'Y' %} &copy; fishing.planet <br> Все права защищены.</p>
+<body>
+<div class="admin_container">
+    <div class="h2 text-center head">
+        Админка
+    </div>
+    {% block menu %}
+        <div class="admin_menu">
+            {% include 'adminapp/includes/inc_menu.html' %}
         </div>
-    </footer>
-    <script src="{% static 'js/style.js' %}"></script>
-    <script src="https://kit.fontawesome.com/c1da958ec3.js" crossorigin="anonymous"></script>
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
 </div>
 </body>
-
 </html>

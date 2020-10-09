@@ -294,3 +294,6 @@ a[href^='/media/users_avatars/'] {
     display: none;
 }
 
+.category_record.not_active {
+    opacity: 0.5;
+}

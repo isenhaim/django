@@ -3,6 +3,11 @@
         <a class="nav-link ml-3" href="{% url 'auth:edit' %}">
             {{ user.username|default:'Пользователь' }}
         </a>
+        {% if user.is_superuser %}
+
+            <a class="nav-link ml-3" href="{% url 'admin:users' %}">Панель управления</a>
+
+        {% endif %}
         <a href="{% url 'basket:view' %}" class="nav-link"><span class="fas fa-cart-plus ">
             {% if basket %} {{ basket.0.get_cost|floatformat:0 }} руб. / {{ basket.0.get_count }} шт.{% endif %}</span>
         </a>
@@ -12,3 +17,4 @@
         <a class="nav-link" href="{% url 'auth:login' %}">войти</a>
     {% endif %}
 {% endblock %}
+
