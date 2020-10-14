@@ -2,26 +2,22 @@
 {% load static %}
 
 {% block content %}
-    <div class="container">
+    <div class="container mt-4">
         <div class="card-columns">
             {% for item in basket_items %}
                 <div class="card badge-dark">
                     <div class="">
-                        <img src="/media/{{ item.product.photo }}"
+                        <img src="/media/{{ item.product.photo|default:'products_images/default.jpg' }}"
                              alt="{{ item.product.short_desc }}" class="" style="width: 100%">
                     </div>
                     <div class="card-body">
                         <div class="text-center ml-3" style="font-size: 11px;">{{ item.product.category.name }}</div>
-                        <div class="text-center ml-3">{{ item.product.name }}</div>
+                        <div class="text-center ml-3" style="height: 50px;">{{ item.product.name }}</div>
                         <div class="text-success">{{ item.product.price }}&nbspруб</div>
-                        <input type="number" name="{{ item.pk }}"
-                               min="0"
-                               value="{{ item.quantity }}" class="">
-                        <button class="btn btn-sm btn-danger">
-                            <a href="{% url 'basket:remove' item.pk %}" class="">
-                                удалить
-                            </a>
-                        </button>
+                        <div class="mt-2">
+                        <input type="number" name="{{ item.pk }}" min="0" value="{{ item.quantity }}" class="w-50 align-middle">
+                        <a href="{% url 'basket:remove' item.pk %}" class="btn btn-sm btn-danger"><i
+                                class="fas fa-trash-alt"></i></a></div>
                     </div>
                 </div>
             {% endfor %}
