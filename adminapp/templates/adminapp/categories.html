@@ -3,41 +3,44 @@
 
 {% block content %}
     <div class="categories_list">
-        <button class="new_category">
-            <a href={% url 'admin:category_create' %}>
-                новая категория
-            </a>
-        </button>
-
-        {% for object in objects %}
-            <div class="category_record
-        {% if not object.is_active %}
-            not_active
-        {% endif %}">
-                <div class="category_name">
-                    {{ object.name|title }}
-                </div>
-                <div class="category_actions">
-                    <button>
-                        <a href={% url 'admin:products' object.pk %}>
-                            товары категории
-                        </a>
-                    </button>
-                    <button>
-                        <a href={% url 'admin:category_update' object.pk %}>
-                            редактировать
-                        </a>
-                    </button>
-                    <button>
-                        <a href={% url 'admin:category_delete' object.pk %}>
-                            удалить
-                        </a>
-                    </button>
-                </div>
-                <div class="category_desc">
-                    {{ object.description|title }}
-                </div>
-            </div>
-        {% endfor %}
+        <a class="btn btn-success float-left mb-3" href={% url 'admin:category_create' %}><i
+                class="fas fa-plus-circle"></i></a>
+        <table class="table table-dark table-striped">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Наименование</th>
+                <th scope="col">Описание</th>
+                <th scope="col">Активна</th>
+                <th scope="col">Товары категории</th>
+                <th scope="col">Редактировать</th>
+                <th scope="col">Удалить</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for object in object_list %}
+                <tr>
+                    <th scope="row" class="align-middle">{{ object.pk }}</th>
+                    <td class="align-middle">{{ object.name }}</td>
+                    <td class="align-middle">{{ object.description }}</td>
+                    <td class="align-middle">
+                        {% if object.is_active %}
+                            <i class="far fa-check-circle"></i>
+                        {% else %}
+                            <i class="fas fa-window-close"></i>
+                        {% endif %}
+                    </td>
+                    <td class="align-middle"><a class="btn btn-info" href={% url 'admin:products' object.pk %}><i
+                            class="fas fa-eye"></i></a>
+                    </td>
+                    <td class="align-middle"><a class="btn btn-info" href={% url 'admin:category_update' object.pk %}><i
+                            class="fas fa-edit"></i></a>
+                    </td>
+                    <td class="align-middle"><a class="btn btn-danger" href={% url 'admin:category_delete' object.pk %}><i
+                            class="fas fa-trash-alt"></i></a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
 {% endblock %}

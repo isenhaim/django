@@ -3,22 +3,21 @@
 
 {% block content %}
     <div class="container">
-        <div class="col">
+        <div class="card-columns">
             {% for item in basket_items %}
-                <div class="row">
-                    <div class="col-4">
+                <div class="card badge-dark">
+                    <div class="">
                         <img src="/media/{{ item.product.photo }}"
-                             alt="{{ item.product.short_desc }}" class="float-left" style="width: 150px">
+                             alt="{{ item.product.short_desc }}" class="" style="width: 100%">
                     </div>
-                    <div class="col">
-                        <div class="text-left ml-3">{{ item.product.category.name }}</div>
-                        <div class="text-left ml-3">{{ item.product.name }}</div>
-                        <div class="">{{ item.product.price }}&nbspруб</div>
+                    <div class="card-body">
+                        <div class="text-center ml-3" style="font-size: 11px;">{{ item.product.category.name }}</div>
+                        <div class="text-center ml-3">{{ item.product.name }}</div>
+                        <div class="text-success">{{ item.product.price }}&nbspруб</div>
                         <input type="number" name="{{ item.pk }}"
                                min="0"
-                               value="{{ item.quantity }}" class="text-left">
-                        {#                    <div class="product_cost">{{ item.cost }}&nbspруб</div>#}
-                        <button class="btn btn-danger">
+                               value="{{ item.quantity }}" class="">
+                        <button class="btn btn-sm btn-danger">
                             <a href="{% url 'basket:remove' item.pk %}" class="">
                                 удалить
                             </a>
